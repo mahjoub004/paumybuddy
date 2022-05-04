@@ -1,0 +1,29 @@
+#Global configuration
+spring:
+
+  application:
+    name: PayMyBuddyV1
+    #H2 Configuration
+    h2.console.enabled: false
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/paymybuddyV3
+    username: root
+    password: "@@21214154@@"
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+server:
+  servlet:
+    context-path: /paymybuddy/
+
+#Log level configuration
+logging:
+  level:
+    error: DEBUG
