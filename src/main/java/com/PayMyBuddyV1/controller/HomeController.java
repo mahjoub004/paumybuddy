@@ -20,6 +20,7 @@ import java.util.Map;
 public class HomeController {
     @Autowired // injection dependency
     private UserRepository userRepository ;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -41,7 +42,7 @@ public class HomeController {
             user.setAccount(account);
             int i = 0 ;
             userRepository.save(user);
-            return "index";
+            return "login";
       
     }
 }

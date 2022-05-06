@@ -83,8 +83,8 @@
 
                     <div class="col-md-8">
                         <div class="card-body">
+                            <h5 class="card-title text-center" th:text="${user.FirstName}"></h5><br>
                             <h5 class="card-title text-center" th:text="${user.email}"></h5>
-                            <h5 class="card-title text-center" th:text="${user.password}"></h5>
 
                         </div>
                     </div>
@@ -95,7 +95,7 @@
             <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-header text-center" ><h2>Amount</h2></div>
                 <div class="card-body">
-                    <h2 class="text-center"> 1200 € </h2>
+                    <h2 class="text-center" th:text="${user.account.amount}" > </h2>
                 </div>
         </div>
 
@@ -118,7 +118,7 @@
                             <img th:src="@{/images/carte.jpeg}" alt="" width="470px" height="300px"/>
                         </div>
                         <div col-md-4>
-                            <form>
+                            <form method="post" th:action="@{/addAmount}">
                                 <div class="mb-3" style="text-align:center;">
                                     <label for="exampleInputAmount" class="form-label mt-4" ><h4>Amount</h4></label>
                                     <input type="number" class="form-control" id="exampleInputAmount" aria-describedby="amountHelp" min="1" placeholder="amount €">
@@ -138,7 +138,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- modal transfer -->
 
