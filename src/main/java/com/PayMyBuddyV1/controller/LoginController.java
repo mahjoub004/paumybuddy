@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,19 +50,19 @@ public class LoginController {
 
     }
 */
+@GetMapping ( "/accueil")
+public String getHomePage(Model model){
+    User user = new User();
+    model.addAttribute("user", user);
+    return "index";
+}
 
 @PostMapping ( "/accueil")
-public ModelAndView showHomePage(@ModelAttribute User user){
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("accueil");
-    modelAndView.addObject("user", user);
-    return modelAndView;
+public String showHomePage(ModelMap model , User user){
+    model.put("username",user.getEmail());
+    model.put("success" ,"you welcome");
+    //System.out.println(user.getAccount().getAmount());
+    return "accueil";
 }
-    @GetMapping ( "/")
-    public ModelAndView getHomePage(@ModelAttribute User user){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("accueil");
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }
+
 }

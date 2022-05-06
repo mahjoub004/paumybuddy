@@ -12,6 +12,9 @@
     <title>Accueil</title>
 </head>
 <body>
+<div class="alert alert-danger " role="alert" th:if="${param.success}">
+    user with email or password  not found
+</div>
 <div class="container">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light text-light bg-success mt-4 ">
@@ -26,7 +29,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">historical transfer</a>
+                            <a class="nav-link" href="#">transfer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link ">Contact</a>
@@ -77,10 +80,12 @@
                     <div class="col-md-4 ">
                         <img th:src="@{/images/profile.png}" class="img-fluid rounded-start" alt="images-profile"/>
                     </div>
+
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title text-center" th:text="${user.firstName}"></h5>
-                            <h5 class="card-title text-center" th:text="${user.lastName}"></h5>
+                            <h5 class="card-title text-center" th:text="${user.email}"></h5>
+                            <h5 class="card-title text-center" th:text="${user.password}"></h5>
+
                         </div>
                     </div>
                 </div>
