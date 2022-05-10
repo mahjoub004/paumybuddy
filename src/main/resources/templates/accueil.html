@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-dark" type="submit">LogOut</button>
+                        <button class="btn btn-dark" type="submit"><a th:href="@{/logout}" class="text-white text-decoration-none">LogOut</a></button>
                     </form>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-header text-center" ><h2>Amount</h2></div>
                 <div class="card-body">
-                    <h2 class="text-center" th:text="${user.account.amount}" > </h2>
+                    <h2 class="text-center" th:text="${user.account.amount}" > € </h2>
                 </div>
         </div>
 
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Envoyer</button>
                                 </div>
                             </form>
                         </div>

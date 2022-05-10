@@ -12,10 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 public class Transfer {
-    @Id
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRANSFER_SEQ")
-    @SequenceGenerator(name = "TRANSFER_SEQ", sequenceName = "TRANSFER_SEQ")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDateTime date;
     @ManyToOne

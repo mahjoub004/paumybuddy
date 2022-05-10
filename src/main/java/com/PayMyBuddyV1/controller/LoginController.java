@@ -5,9 +5,15 @@ import com.PayMyBuddyV1.repository.UserRepository;
 import com.PayMyBuddyV1.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Data
 @Controller
@@ -17,6 +23,26 @@ public class LoginController {
 
     @Autowired
     private UserService userService ;
+
+    @GetMapping ( "/")
+    public String getHomePage(Model model){
+        User user = userService.findAccount();
+        model.addAttribute("user", user);
+
+        return "accueil";
+    }
+
+    @GetMapping("logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login";
+    }
+
+}
+
 /*
     @GetMapping ( "/")
     public ModelAndView showHomePage(){
@@ -40,15 +66,6 @@ public class LoginController {
 
     }
 */
-@GetMapping ( "/")
-public String getHomePage(Model model){
-    User user = userService.findAccount();
-    model.addAttribute("user", user);
-    System.out.println(user.getFirstName());
-
-    return "accueil";
-}
-
 
 
 
@@ -62,4 +79,4 @@ public String showHomePage(ModelMap model , User user){
 }
  */
 
-}
+
